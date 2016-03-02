@@ -1,0 +1,86 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.13/p5.js"></script>
+    <script>
+      var car1;
+      var car2;
+      var car3;
+      
+      function setup() {
+        createCanvas(500,500);
+        car1 = new Car(5,random(20),255,0,0);
+        car2 = new Car(5,random(20),0,255,0);
+        car3 = new Car(5,random(20),0,0,255);
+      }
+      
+      function draw() {
+        background(155,192,249);
+        fill(155,249,192)
+        rect(450,0,50,500);
+        fill(155,249,192)
+        rect(mouseX,mouseY,25,25);
+        if(mouseX + 25 > 450 ){
+
+          textSize(50);
+          text("YOU WIN!", width / 4, height / 2);
+                     noLoop();
+          
+        }
+        // if(mouseX =  car1,ar2,car3) {
+        //  text("you lost",240,250 );
+         
+        // }
+        // if(mouseX > this.x && mouseX < this.x + this.w && mouseY 
+        // > this.y && mouseY < this.y + this.h){
+        //   for(var i=0; i<cars.length; i++){
+        //     if(mouseX > cars[i].x &&
+        //       mouseX < cars[i].x+this.w &&
+        //       mouseY > cars[i].y &&
+        //       mouseY < cars[i].y+this.h
+        //       )
+        //       car.splice(i,1);
+        //     } 
+          
+         car1.move();
+         car1.display();
+         car2.move();
+         car2.display();
+         car3.move();
+         car3.display();
+      }
+      
+      
+      function Car(scale,speed,r,g,b) {
+        this.x = random(width);
+        this.y = random(height );
+        this.speed = speed;
+        
+        
+        this.move = function(){
+          this.y += speed;
+          if(this.y > width){
+            this.y = 0;
+          }
+        }
+        
+         this.display = function(){
+           fill(r,g,b);
+           rect(this.x,this.y,10*scale,20*scale);
+         }
+      }
+    </script>
+</head>
+
+<body>
+
+
+<form><input TYPE="button" onClick="history.go(0)" value="Reset"></form>
+
+
+</body>
+
+</html>
